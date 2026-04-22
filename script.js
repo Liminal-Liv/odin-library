@@ -65,6 +65,6 @@ function handleSubmitForm(event) {
 
 bookForm.addEventListener('submit', handleSubmitForm);
 cancelBtn.addEventListener('click', () => dialog.close());
-newBookBtn.addEventListener(click, ()=> {
+newBookBtn.addEventListener('click', ()=> {
     dialog.showModal();
 });
