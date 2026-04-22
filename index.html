@@ -7,8 +7,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <button class="new-book">Add New Book</button>
     <div class="library-display"></div>
 
+    <dialog class="book-dialog">
+        <form class="book-form" method="dialog">
+            <h2>Add New Book</h2>
+
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" class="input-title" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" id="author" class="input-author">
+            </div>
+            <div class="form-group">
+                <label for="pages">Pages</label>
+                <input type="text" id="pages" class="input-pages">
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" class="input-read">Have you read it?
+                </label>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" class="submit-btn">Add to Library</button>
+                <button type="button" class="cancel-btn">Cancel</button>
+            </div>
+        </form>
+    </dialog>
     <script src="script.js"></script>
 </body>
 </html>
