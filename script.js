@@ -20,28 +20,29 @@ function addBookToLibrary(title, author, pages, read) {
 
 function displayBooks() {
     const display = document.querySelector('.library-display');
-    display.textContent = '';
+    display.querySelectorAll('.book-card').forEach(card => card.remove());
 
     for (const book of myLibrary) {
         const card = document.createElement('div');
         card.classList.add('book-card');
-
         // this hidden data id was added to make removing specific books easier
         card.dataset.id = book.id;
 
-        const title = document.createElement('h2');
+        const title = document.createElement('p');
         title.textContent = book.title;
 
         const author = document.createElement('p');
-        author.textContent = `By ${book.author}`;
+        author.textContent = book.author;
 
         const pages = document.createElement('p');
-        pages.textContent = `${book.pages} pages`;
+        pages.textContent = book.pages;
 
-        const read = document.createElement('p');
-        read.textContent = `${book.read ? "Read" : "Unread"}`
+        const readStatus = document.createElement('input');
+        readStatus.type = 'checkbox';
+        readStatus.classList.add('read-checkbox');
+        readStatus.checked = book.read ? true : false;
 
-        card.append(title, author, pages, read);
+        card.append(title, author, pages, readStatus);
         display.appendChild(card);
     }
 }
