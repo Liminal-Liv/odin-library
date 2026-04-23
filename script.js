@@ -41,6 +41,11 @@ function displayBooks() {
         readStatus.type = 'checkbox';
         readStatus.classList.add('read-checkbox');
         readStatus.checked = book.read ? true : false;
+        readStatus.addEventListener('change', (e)=>{
+            // grabs the ID from the current 'book' in the array loop
+            // and the status from the checkbox 'e.target'
+            toggleReadStatus(book.id, e.target.checked)
+        })
 
         card.append(title, author, pages, readStatus);
         display.appendChild(card);
@@ -62,6 +67,17 @@ function handleSubmitForm(event) {
 
     bookForm.reset();
     dialog.close();
+}
+
+// takes the true/false read from the DOM checkbox and updates the array myLibrary with it.
+function toggleReadStatus(bookId, isChecked) {
+    // console.log("I am looking for book ID:", id);
+    // console.log("The user wants the read status to be:", status);
+    const bookToUpdate = myLibrary.find(b => b.id === bookId);
+
+    if (bookToUpdate) {
+        bookToUpdate.read = isChecked;
+    }
 }
 
 bookForm.addEventListener('submit', handleSubmitForm);
