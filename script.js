@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 const newBookBtn = document.querySelector('.new-book');
 const dialog = document.querySelector('.book-dialog');
@@ -47,7 +47,15 @@ function displayBooks() {
         readStatus.checked = book.read ? true : false;
         readStatus.addEventListener('change', ()=> book.toggleRead());
 
-        card.append(title, author, pages, readStatus);
+        const deleteBtn = document.createElement('button');
+        deleteBtn.innerText = 'Delete';
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.addEventListener('click', ()=> {
+            console.log('button clicked');
+            removeBook(book.id);
+        });
+
+        card.append(title, author, pages, readStatus, deleteBtn);
         display.appendChild(card);
     }
 }
@@ -67,6 +75,11 @@ function handleSubmitForm(event) {
 
     bookForm.reset();
     dialog.close();
+}
+
+function removeBook(id) {
+    myLibrary = myLibrary.filter((book)=> book.id !== id);
+    displayBooks();
 }
 
 bookForm.addEventListener('submit', handleSubmitForm);

@@ -1,6 +1,6 @@
 .library-display {
     display: grid;
-    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    grid-template-columns: repeat(5, minmax(6.25rem, 1fr));
     gap: 1px;
     justify-content: center;
     align-items: center;
@@ -9,4 +9,8 @@
 .book-card,
 .grid-header-container {
     display: contents;
+}
+
+.delete-btn {
+    width: 4rem;
 }
